@@ -6,9 +6,8 @@ function Nav(){
         <>
             <header className='menu'>
                 <nav className='nav-menu'>
-                    <ul>
-                        <Link to="/">Home</Link>
-                    </ul>
+                    <Link to='/'>Home</Link>
+                    <Link to='/login'>Faça Login</Link>
                 </nav>
             </header>
         </>
