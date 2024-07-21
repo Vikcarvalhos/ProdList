@@ -1,10 +1,20 @@
 {
-    "users": [
-      {
-        "ID": "1",
-        "UserName": "Administrator",
-        "Email": "administrator@prodlist.com",
-        "User": "administrator",
-        "Password": "prodlistadmin"
-      }
-]}
+  "users": [
+    {
+      "ID": "0",
+      "Type": "Admin",
+      "UserName": "Administrator",
+      "Email": "administrator@prodlist.com",
+      "User": "administrator",
+      "Password": "prodlistadmin"
+    },
+    {
+      "UserName": "João",
+      "Email": "email@email.com",
+      "User": "jvtt",
+      "Password": "12345",
+      "Type": "User",
+      "ID": "1"
+    }
+  ]
+}
