@@ -1,0 +1,16 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+	<title>Logo</title>
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 1000px;fill: #ffffff;font-weight: 400;font-family: "CormorantUnicase-Regular", "Cormorant Unicase" } 
+		.t1 { font-size: 900px;fill: #ffffff;font-weight: 400;font-family: "CormorantUnicase-Regular", "Cormorant Unicase" } 
+	</style>
+	<text id="P" style="transform: matrix(1.448,0,0,1.448,47.539,231.635)" >
+		<tspan x="0" y="468" class="t0">P
+</tspan>
+	</text>
+	<text id="L" style="transform: matrix(1.448,0,0,1.448,641.828,1079.276)" >
+		<tspan x="-239.8" y="0" class="t1">L
+</tspan>
+	</text>
+</svg>

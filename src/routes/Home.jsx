@@ -5,13 +5,14 @@ function Home(){
 
     return(
         <>
-            <main>
-                <div className="main-container">
-                    <div>
-                        <h1>Home</h1>
-                        <p>Home Page</p>
+            <main className='main-container'>
+                <div className="main-content">
+                    <div className='main-text'>
+                        <h1 className='home-title'>Cadastro e Listagem de Produtos</h1>
+                        <h2 className='home-subtitle'>Gerencie seus produtos com facilidade e eficiência</h2>
+                        <button className='home-button'>Confira os Produtos</button>
                     </div>
-                    <div>
+                    <div className='main-image'>
                         <img id='mainImg' src={mainImg} alt='mulher escolhendo produto'/>
                     </div>
                 </div>
