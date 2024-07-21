@@ -18,16 +18,31 @@ function Home(){
                 </div>
             </main>
             <section className='product-registration'>
-                <form>
-                    <h2>Product Registration</h2>
-                    <label htmlFor='product-name'>ID</label>
-                    <input type='text' id='product-name' name='product-name' required/>
-                    <label htmlFor='product-name'>Produto</label>
-                    <input type='text' id='product-name' name='product-name' required/>
-                    <label htmlFor='product-price'>Preço</label>
-                    <input type='text' id='product-price' name='product-price' required/>
-                    <label htmlFor='product-quantity'>Quantidade</label>
-                    <input type='text' id='product-quantity' name='product-quantity' required/>
+                <h2>Registrar Produto</h2>
+                <form className='product-registration-form'>
+                    <div className='product-input'>
+                        <label htmlFor='product-name'>Produto</label>
+                        <input className='product-input-text' type='text' id='product-name' name='product-name' required/>
+                    </div>
+                    <div className='product-input'>
+                        <label htmlFor='product-description'>Descrição</label>
+                        <textarea className='product-input-text' 
+                        type='text' id='product-description' 
+                        name='product-description' 
+                        onInput={(e) => {
+                            e.target.style.height = 'auto'; // Reseta a altura para calcular corretamente
+                            e.target.style.height = e.target.scrollHeight + 'px'; // Ajusta a altura com base no conteúdo
+                          }}
+                        required/>
+                    </div>
+                    <div className='product-input'>
+                        <label htmlFor='product-price'>Preço</label>
+                        <input className='product-input-text' type='text' id='product-price' name='product-price' required/>
+                    </div>
+                    <div className='product-input'>
+                        <label htmlFor='product-quantity'>Quantidade</label>
+                        <input className='product-input-text' type='text' id='product-quantity' name='product-quantity' required/>
+                    </div>
                     <button type='submit'>Registrar</button>
                 </form>
             </section>
