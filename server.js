@@ -6,6 +6,7 @@ import cors from 'cors';
 const app = express();
 const PORT = 3000;
 const filePath = 'D:/ProdList/data/user.json';
+const productsFilePath = 'D:/ProdList/data/product.json';
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -57,6 +58,72 @@ app.post('/login', (req, res) => {
             res.status(401).send('Usuário ou senha inválidos.');
         }
     });
+});
+
+app.get('/products', (req, res) => {
+    fs.readFile('D:/ProdList/data/product.json', (err, data) => {
+        if (err) {
+            res.status(500).send('Erro ao ler o arquivo de produtos.');
+            return;
+        }
+
+        const products = JSON.parse(data.toString());
+        res.json(products);
+    });
+});
+
+app.post('/products', (req, res) => {
+    const newProduct = req.body;
+    newProduct.Visibility = "Enabled"; // Adiciona o campo Visibility com o valor "Enabled"
+
+    fs.readFile('D:/ProdList/data/product.json', (err, data) => {
+        if (err) {
+            res.status(500).send('Erro ao ler o arquivo de produtos.');
+            return;
+        }
+
+        const products = JSON.parse(data.toString());
+        // Encontra o maior ID atual no array de produtos e incrementa
+        const maxId = products.products.reduce((max, product) => Math.max(max, parseInt(product.ID)), 0);
+        newProduct.ID = (maxId + 1).toString(); // Atribui um novo ID ao newProduct
+        products.products.push(newProduct); // Adiciona o newProduct ao array de produtos
+
+        fs.writeFile('D:/ProdList/data/product.json', JSON.stringify(products, null, 2), (err) => {
+            if (err) {
+                res.status(500).send('Erro ao salvar o produto.');
+                return;
+            }
+
+            res.status(200).send({ message: 'Produto cadastrado com sucesso!' });
+        });
+    });
+});
+
+function getProducts() {
+    const data = fs.readFileSync(productsFilePath);
+    return JSON.parse(data).products;
+}
+
+// Função para salvar os produtos atualizados no arquivo
+function saveProducts(products) {
+    const data = JSON.stringify({ products }, null, 2);
+    fs.writeFileSync(productsFilePath, data);
+}
+
+// Rota para remover um produto pelo ID
+app.delete('/products/:id', (req, res) => {
+    const { id } = req.params;
+    const products = getProducts();
+    const productIndex = products.findIndex(product => product.ID === id);
+
+    if (productIndex !== -1) {
+        // Remove o produto encontrado
+        products.splice(productIndex, 1);
+        saveProducts(products); // Salva a lista atualizada de produtos no arquivo
+        res.json({ message: `Produto com ID ${id} removido com sucesso.` });
+    } else {
+        res.status(404).json({ message: 'Produto não encontrado.' });
+    }
 });
 
 app.listen(PORT, () => {

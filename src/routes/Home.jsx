@@ -1,7 +1,55 @@
-import '../css/style.css'
-import mainImg from '../assets/img/mainProdList.svg' 
+import React, { useEffect, useState } from 'react';
+import '../css/style.css';
+import mainImg from '../assets/img/mainProdList.svg';
+import axios from 'axios';
 
 function Home(){
+    const [products, setProducts] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        // Carrega os produtos
+        fetch('http://localhost:3000/products')
+            .then(response => response.json())
+            .then(data => setProducts(data.products))
+            .catch(error => console.error("Erro ao carregar produtos:", error));
+    
+        // Verifica se o usuário é Admin
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        if (userInfo && userInfo.Type === 'Admin') {
+            setIsAdmin(true);
+        }
+    }, []);
+
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Previne o comportamento padrão do formulário
+
+        // Coleta os dados do formulário
+        const formData = new FormData(event.target);
+        const productData = {
+            Title: formData.get('product-name'),
+            Description: formData.get('product-description'),
+            Price: formData.get('product-price'),
+            Quantity: formData.get('product-quantity')
+        };
+
+        // Usa o Axios para enviar os dados para a API
+        axios.post('http://localhost:3000/products', productData)
+            .then(response => {
+                console.log(response.data.message);
+                // Atualiza a lista de produtos após o cadastro
+                setProducts([...products, productData]);
+            })
+            .catch(error => console.error("Erro ao cadastrar produto:", error));
+    };
+
+    const handleRemove = (productId) => {
+        axios.delete(`http://localhost:3000/products/${productId}`)
+            .then(() => {
+                setProducts(products.filter(product => product.ID !== productId));
+            })
+            .catch(error => console.error("Erro ao remover produto:", error));
+    };
 
     return(
         <>
@@ -19,7 +67,7 @@ function Home(){
             </main>
             <section className='product-registration'>
                 <h2>Registrar Produto</h2>
-                <form className='product-registration-form'>
+                <form className='product-registration-form' onSubmit={handleSubmit}>
                     <div className='product-input'>
                         <label htmlFor='product-name'>Produto</label>
                         <input className='product-input-text' type='text' id='product-name' name='product-name' required/>
@@ -48,6 +96,22 @@ function Home(){
             </section>
             <section className='product-list'>
                 <h2>Produtos</h2>
+                <div className='product-grid'>
+                    {products.map(({ ID, Visibility, ...product }) => (
+                        <div key={ID} className='product-card'>
+                            <h3>{product.Title}</h3>
+                            <p>{product.Description}</p>
+                            <div className='product-price-container'>
+                                <p className='product-price'>${product.Price}</p>
+                                {isAdmin ? (
+                                    <button className='product-buy-button' onClick={() => handleRemove(ID)}>Remover</button>
+                                ) : (
+                                    <button className='product-buy-button'>Comprar</button>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </section>
         </>
     )

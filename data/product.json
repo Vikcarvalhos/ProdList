@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "Title": "Bodysplash",
+      "Description": "Perfume para o corpo",
+      "Price": "10",
+      "Quantity": "50",
+      "Visibility": "Enabled",
+      "ID": "1"
+    }
+  ]
+}
