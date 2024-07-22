@@ -5,8 +5,8 @@ import cors from 'cors';
 
 const app = express();
 const PORT = 3000;
-const filePath = 'D:/ProdList/data/user.json';
-const productsFilePath = 'D:/ProdList/data/product.json';
+const filePath = './ProdList/data/user.json';
+const productsFilePath = './ProdList/data/product.json';
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -61,7 +61,7 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/products', (req, res) => {
-    fs.readFile('D:/ProdList/data/product.json', (err, data) => {
+    fs.readFile('./ProdList/data/product.json', (err, data) => {
         if (err) {
             res.status(500).send('Erro ao ler o arquivo de produtos.');
             return;
@@ -76,7 +76,7 @@ app.post('/products', (req, res) => {
     const newProduct = req.body;
     newProduct.Visibility = "Enabled"; // Adiciona o campo Visibility com o valor "Enabled"
 
-    fs.readFile('D:/ProdList/data/product.json', (err, data) => {
+    fs.readFile('./ProdList/data/product.json', (err, data) => {
         if (err) {
             res.status(500).send('Erro ao ler o arquivo de produtos.');
             return;
@@ -88,7 +88,7 @@ app.post('/products', (req, res) => {
         newProduct.ID = (maxId + 1).toString(); // Atribui um novo ID ao newProduct
         products.products.push(newProduct); // Adiciona o newProduct ao array de produtos
 
-        fs.writeFile('D:/ProdList/data/product.json', JSON.stringify(products, null, 2), (err) => {
+        fs.writeFile('./ProdList/data/product.json', JSON.stringify(products, null, 2), (err) => {
             if (err) {
                 res.status(500).send('Erro ao salvar o produto.');
                 return;

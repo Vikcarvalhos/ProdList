@@ -7,14 +7,6 @@
       "Email": "administrator@prodlist.com",
       "User": "administrator",
       "Password": "prodlistadmin"
-    },
-    {
-      "UserName": "João",
-      "Email": "email@email.com",
-      "User": "jvtt",
-      "Password": "12345",
-      "Type": "User",
-      "ID": "1"
     }
   ]
 }
