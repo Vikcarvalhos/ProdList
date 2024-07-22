@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "Produto": "Notebook",
+            "Descri\u00e7\u00e3o": "Notebook para Escrit\u00f3rio",
+            "Pre\u00e7o": 1000,
+            "Quantidade": 10,
+            "Visibility": "Enabled",
+            "ID": "1"
+        },
+        {
+            "Produto": "Notebook",
+            "Descri\u00e7\u00e3o": "Notebook para Escrit\u00f3rio",
+            "Pre\u00e7o": 1000,
+            "Quantidade": 10,
+            "Visibility": "Enabled",
+            "ID": "2"
+        },
+        {
+            "Produto": "Notebook",
+            "Descri\u00e7\u00e3o": "Notebook para Escrit\u00f3rio",
+            "Pre\u00e7o": 1000,
+            "Quantidade": 10,
+            "Visibility": "Enabled",
+            "ID": "3"
+        }
+    ]
+}

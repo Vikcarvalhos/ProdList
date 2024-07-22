@@ -90,16 +90,38 @@
                 resize: none;
             };
         };
-        button{
-            width: 40%;
-            background-color: var(--page-color-1);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-        };
+
+        .product-registration-buttons-1{
+            display: flex;
+            justify-content: space-between;
+            button{
+                width: 30%;
+                background-color: var(--page-color-1);
+                color: white;
+                padding: 0.5rem 1rem;
+                border: none;
+                font-size: 1rem;
+                font-weight: 500;
+                cursor: pointer;
+            };
+        }
+
+        .product-registration-buttons-2{
+            display: flex;
+            justify-content: space-between;
+            button{
+                width: 30%;
+                background-color: var(--page-color-1);
+                color: white;
+                padding: 0.5rem 1rem;
+                border: none;
+                font-size: 1rem;
+                font-weight: 500;
+                cursor: pointer;
+            };
+        }
+
+        
     };
 }
 

@@ -51,6 +51,27 @@ function Home(){
             .catch(error => console.error("Erro ao remover produto:", error));
     };
 
+    const handleDownloadTemplate = () => {
+        window.location.href = 'http://localhost:5000/download-template';
+    };
+
+    const handleFileUpload = (event) => {
+        const fileInput = document.querySelector('#file');
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+    
+        axios.post('http://localhost:5000/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+        .then(response => {
+            console.log(response.data.message);
+            // Atualize a lista de produtos aqui, se necessário
+        })
+        .catch(error => console.error("Erro ao enviar arquivo:", error));
+    };
+
     return(
         <>
             <main className='main-container'>
@@ -91,7 +112,14 @@ function Home(){
                         <label htmlFor='product-quantity'>Quantidade</label>
                         <input className='product-input-text' type='text' id='product-quantity' name='product-quantity' required/>
                     </div>
-                    <button type='submit'>Registrar</button>
+                    <div className='product-registration-buttons-1'>
+                        <button type='submit'>Registrar</button>
+                        <button className='download-template-button' onClick={handleDownloadTemplate}>Baixe Modelo Para Cadastro</button>
+                    </div>
+                    <div className='product-registration-buttons-2'>
+                        <input type="file" name="file" id="file" />
+                        <button type="button" onClick={handleFileUpload}>Enviar Arquivo</button>
+                    </div>
                 </form>
             </section>
             <section className='product-list'>
