@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { IoLogInSharp } from "react-icons/io5";
+import { CiLogout } from "react-icons/ci";
 import logoBlack from '../assets/img/PLLogo.svg';
 import logoWhite from '../assets/img/PLLogoW.svg'
 import '../css/nav.css'
@@ -23,9 +25,9 @@ function Nav() {
                     </div>
                     <div className='nav-user-container'>
                         {userInfo ? (
-                            <button onClick={handleLogoff}>Logoff</button>
+                            <button className='user-log' onClick={handleLogoff}>Logoff <CiLogout/></button>
                         ) : (
-                            <Link to='/login'>Faça Login</Link>
+                            <Link className='user-log' to='/login'>Faça Login <IoLogInSharp/></Link>
                         )}
                     </div>
                 </nav>

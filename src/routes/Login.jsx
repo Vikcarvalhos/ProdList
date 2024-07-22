@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import '../css/login.css';
 
 function Login() {
     const [showForm, setShowForm] = useState('signup');
@@ -41,24 +42,30 @@ function Login() {
 
     return (
         <>
-            <button onClick={handleShowSignUp}>Fazer cadastro</button>
-            <button onClick={handleShowLogin}>Entre</button>
-            {showForm === 'signup' && (
-                <form id='signup-form' onSubmit={handleSubmit}>
-                    <input name="UserName" type="text" placeholder="Nome Completo" />
-                    <input name="Email" type="email" placeholder="Email" />
-                    <input name="User" type="text" placeholder="Usuário" />
-                    <input name="Password" type="password" placeholder="Senha" />
-                    <button type="submit">Cadastrar</button>
-                </form>
-            )}
-            {showForm === 'login' && (
-                <form id='login-form' onSubmit={handleLogin}>
-                    <input name="User" type="text" placeholder="Usuário ou Email" />
-                    <input name="Password" type="password" placeholder="Senha" />
-                    <button type="submit">Entrar</button>
-                </form>
-            )}
+            <section className='login-content'>
+                <div className='login-container'>
+                    <div className='login-button-container'>
+                        <button className='login-button-option' onClick={handleShowSignUp}>Fazer cadastro</button>
+                        <button className='login-button-option' onClick={handleShowLogin}>Entre</button>
+                    </div>
+                    {showForm === 'signup' && (
+                        <form id='signup-form' onSubmit={handleSubmit}>
+                            <input name="UserName" type="text" placeholder="Nome Completo" />
+                            <input name="Email" type="email" placeholder="Email" />
+                            <input name="User" type="text" placeholder="Usuário" />
+                            <input name="Password" type="password" placeholder="Senha" />
+                            <button type="submit">Cadastrar</button>
+                        </form>
+                    )}
+                    {showForm === 'login' && (
+                        <form id='login-form' onSubmit={handleLogin}>
+                            <input name="User" type="text" placeholder="Usuário ou Email" />
+                            <input name="Password" type="password" placeholder="Senha" />
+                            <button type="submit">Entrar</button>
+                        </form>
+                    )}
+                </div>
+            </section>
         </>
     );
 }
