@@ -98,7 +98,7 @@
                 width: 30%;
                 background-color: var(--page-color-1);
                 color: white;
-                padding: 0.5rem 1rem;
+                padding: 0.5rem;
                 border: none;
                 font-size: 1rem;
                 font-weight: 500;
@@ -113,7 +113,7 @@
                 width: 30%;
                 background-color: var(--page-color-1);
                 color: white;
-                padding: 0.5rem 1rem;
+                padding: 0.5rem;
                 border: none;
                 font-size: 1rem;
                 font-weight: 500;
