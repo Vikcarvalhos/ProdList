@@ -10,7 +10,7 @@ CORS(app)
 
 @app.route('/download-template', methods=['GET'])
 def download_template():
-    directory = r'.\ProdList\src\assets'  # Caminho do diretório onde o arquivo está localizado
+    directory = r'.\src\assets'  # Caminho do diretório onde o arquivo está localizado
     filename = 'Modelo para envio.xlsx'  # Nome do arquivo para download
     return send_from_directory(directory, filename, as_attachment=True)
 
@@ -29,7 +29,7 @@ def upload_file():
         df['Visibility'] = 'Enabled'
         
         # Define o caminho correto para o product.json
-        product_json_path = r'.\ProdList\data\product.json'
+        product_json_path = r'.\data\product.json'
         
         # Carrega o product.json atual
         if os.path.exists(product_json_path):
